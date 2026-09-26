@@ -30,5 +30,15 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Verify secret is available
+        env:
+          DEMO_API_KEY: ${{ secrets.DEMO_API_KEY }}
+        run: |
+          if [ -z "$DEMO_API_KEY" ]; then
+            echo "Secret is missing"
+            exit 1
+          fi
+          echo "Secret is configured correctly"
+
       - name: Run tests
         run: npm test
