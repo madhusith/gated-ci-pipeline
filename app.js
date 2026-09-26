@@ -12,4 +12,10 @@ app.get("/health", (req, res) => {
     res.status(200).send("ok");
 });
 
+app.get("/status", (req, res) => {
+    res.json({
+        status: "running",
+    });
+});
+
 module.exports = app;

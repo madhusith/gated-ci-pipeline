@@ -15,4 +15,11 @@ describe("API Tests", () => {
         expect(response.statusCode).toBe(200);
         expect(response.text).toBe("ok");
     });
+
+    test("GET /status should return running", async () => {
+        const response = await request(app).get("/status");
+
+        expect(response.statusCode).toBe(200);
+        expect(response.body.status).toBe("running");
+    });
 });
